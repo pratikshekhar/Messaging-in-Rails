@@ -8,6 +8,29 @@
 </head>
 <body>
 
+
+<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<b><%= link_to "CS 575 Personalized Chat Box Messaging Application", root_path, class: "navbar-brand" %></b>
+			</div>
+
+			<% if user_signed_in? %>
+
+			   <b> <%= link_to "Sign Out", destroy_user_session_path,method: "delete", class: "navbar-text navbar-link navbar-right" %>
+			    <%= link_to "Inbox", messages_path, class: "navbar-text navbar-link navbar-right" %>
+				<%= link_to "New Message", new_message_path, class: "navbar-text navbar-link navbar-right" %></b>
+
+			<% else %>
+			    <b><%= link_to "Sign Up", new_user_registration_path,class: "navbar-text navbar-link navbar-right"  %>
+            	<%= link_to "Log In", new_user_session_path, class: "navbar-text navbar-link navbar-right" %></b>
+            <% end %>
+		</div>
+	</nav>
+
+
+
+
 	<%= render 'layouts/header' %>
 
 	<div class="container">

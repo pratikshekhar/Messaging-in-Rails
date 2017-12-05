@@ -1,14 +1,18 @@
 <div id="stream">
-	<%= form_for :message, url: messages_path do |f| %>
-		<%= f.text_area :body,  id: "url", placeholder: "Message", class: "message_body" %>
+<div class="col-md-6 col-md-offset-3">
+	<%= simple_form_for :message, url: messages_path do |f| %>
+
+		<%= f.text_area :body,  id: "url", placeholder: "Message", class: "message_body", cols: "60", rows: "3" %>
+
 
 		<div id="stream-list" class="follow-list">
 			<ul>
 				<% @recipients.each do |user| %>
 					<label for="user<%= user.id %>" >
 						<li id="stream_item">
-							<span class="list-group-item"><%= user.username %></span>
+							<span class="list-group-item" style="display:block; width:300px"><%= user.username %></span>
 							<%= check_box_tag "message[user_tokens][]", user.id, @message.users.include?(user), id: "user#{user.id}" %>
+
 						</li>
 					</label>
 					<br>
@@ -17,8 +21,9 @@
 		</div>
 
 		<div id ="stream-footer">
-			<%= f.button :submit, class: "btn btn-outline" %>
+			<%= f.button :submit, value= "Send Message", class: "btn btn-outline" %>
 		</div>
 
 	<% end %>
+</div>
 </div>
